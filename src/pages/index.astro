@@ -1,0 +1,31 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.svelte';
+import ProjectGrid from '../components/ProjectGrid.svelte';
+import ExperienceCard from '../components/ExperienceCard.svelte';
+import { personalData } from '../data/personal';
+import { experiences } from '../data/experience';
+---
+
+<Layout title={`Home | ${personalData.name}`} description={`Welcome to the portfolio of ${personalData.name}`}>
+  <Hero client:visible />
+
+  <section class="py-16">
+    <h2 class="text-3xl font-bold text-center mb-12 text-accent-green">Featured Projects</h2>
+    <ProjectGrid featured={true} client:visible />
+    <div class="text-center mt-12">
+      <a href="/projects" class="inline-block bg-accent-orange text-white font-bold py-3 px-6 rounded hover:bg-opacity-90 transition-colors">
+        View All Projects
+      </a>
+    </div>
+  </section>
+
+  <section class="py-16">
+    <h2 class="text-3xl font-bold text-center mb-12 text-accent-green">Experience</h2>
+    <div class="space-y-8 max-w-3xl mx-auto fade-in">
+        {experiences.map(exp => (
+            <ExperienceCard experience={exp} />
+        ))}
+    </div>
+  </section>
+</Layout>
