@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap');
 
 :root {
@@ -14,10 +13,20 @@
   --accent-blue: #3592FF;
 }
 
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
 body {
+  
   background-color: var(--bg-color);
   color: var(--primary-text);
-  font-family: 'Inter', sans-serif;
+  font-family: 'JetBrains Mono', monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

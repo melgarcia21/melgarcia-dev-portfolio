@@ -1,14 +1,14 @@
 export const personalData = {
-  name: "Your Name",
-  role: "Software Developer",
-  bio: "A passionate developer with a love for creating clean, efficient, and user-friendly web applications. Specializing in modern JavaScript frameworks and building beautiful interfaces.",
+  name: "Mel Garcia",
+  role: "Full Stack Developer",
+  bio: "A passionate developer with a love for creating clean, efficient, and user-friendly web applications. Specializing in modern JavaScript frameworks and building clean interfaces.",
   profile: '/images/profile.jpg',
   contact: {
-    email: "your.email@example.com",
+    email: "melgarcia.dev@gmail.com",
     social: [
-      { name: "GitHub", url: "https://github.com/your-username", icon: "github" },
-      { name: "LinkedIn", url: "https://linkedin.com/in/your-profile", icon: "linkedin" },
-      { name: "Twitter", url: "https://twitter.com/your-username", icon: "twitter" },
+      { name: "GitHub", url: "https://github.com/melgarcia", icon: "github" },
+      { name: "LinkedIn", url: "https://linkedin.com/in/melgarcia", icon: "linkedin" },
+      { name: "Twitter", url: "https://twitter.com/melgarcia", icon: "twitter" },
     ],
   },
   skills: {
