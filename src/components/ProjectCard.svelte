@@ -3,7 +3,7 @@
   export let project: Project;
 </script>
 
-<a href={`/projects/${project.slug}`} class="group block overflow-hidden rounded-lg border border-gray-800 hover:border-accent-purple transition-colors duration-300">
+<a href={`/projects/${project.slug}`} class="group block overflow-hidden rounded-lg border border-gray-800 transition-colors duration-300">
   <img
     src={project.thumbnail}
     alt={project.title}

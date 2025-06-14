@@ -22,16 +22,24 @@
   display: none;
 }
 
+:root {
+  --tile: rgba(0, 182, 247, 0.1); 
+}
+
 body {
-  
   background-color: var(--bg-color);
   color: var(--primary-text);
-  font-family: 'JetBrains Mono', monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1 {
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: 700;
+  color: var(--primary-text);
+}
+
+h2, h3, h4, h5, h6 {
   font-family: 'JetBrains Mono', monospace;
   color: var(--primary-text);
 }
