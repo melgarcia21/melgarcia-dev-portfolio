@@ -1,7 +1,7 @@
 <script lang="ts">
-	import Sparkles from './ui/Sparkles.svelte';
-	import TextFlip from './ui/TextFlip.svelte';
-	import DownloadResume from './ui/DownloadResume.svelte';
+	import Sparkles from '../ui/Sparkles.svelte';
+	import TextFlip from '../ui/TextFlip.svelte';
+	import DownloadResume from '../ui/DownloadResume.svelte';
 	// import GridBackground from './ui/GridBackground.svelte';
 
 	const name = 'Mel Garcia';

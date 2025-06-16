@@ -1,59 +1,35 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import ExperienceCard from '../components/ExperienceCard.svelte';
-import LinkContainer from '../components/LinkContainer.svelte';
-import { personalData } from '../data/personal';
-import { experiences, education } from '../data/experience';
 
-import HoverButton from '../components/ui/HoverButton.svelte';
+import AboutSection from '../components/about/AboutSection.svelte';
+import Expertise from '../components/about/Expertise.svelte';
+import Experience from '../components/about/Experience.svelte';
+import Education from '../components/about/Education.svelte';
+import Certifications from '../components/about/Certifications.svelte';
+import Highlights from '../components/about/Highlights.svelte';
+import Achievements from '../components/about/Achievements.svelte';
+import Contact from '../components/about/Contact.svelte';
+
+import { personal } from '../data/personal.ts';
 
 ---
 
-<Layout title={`About | ${personalData.name}`}>
-  <section class="fade-in">
-    <div class="text-center">
-      <h1 class="text-4xl font-bold">About Me</h1>
-      <img src={personalData.profile} alt={personalData.name} class="w-24 h-24 mx-auto my-6 border-2 border-accent-purple"/>
-      <p class="max-w-3xl mx-auto text-gray-300 leading-relaxed">{personalData.bio}</p>
-    </div>
-
-    <LinkContainer client:visible />
-
-  </section>
-
-  <section class="py-16">
-    <h2 class="text-3xl font-bold text-center mb-12 text-accent-green">Professional Experience</h2>
-    <div class="space-y-8 max-w-3xl mx-auto">
-        {experiences.map(exp => (
-            <ExperienceCard client:visible experience={exp} />
-        ))}
-    </div>
-  </section>
-
-
-  <section class="py-16">
-    <h2 class="text-3xl font-bold text-center mb-12 text-accent-green">Skills & Technologies</h2>
-    <div class="max-w-3xl mx-auto grid md:grid-cols-2 gap-8 text-center">
-      {Object.entries(personalData.skills).map(([category, skillsList]) => (
-        <div class="bg-gray-900/50 p-6 rounded-lg border border-gray-800">
-          <h3 class="text-xl font-bold text-accent-blue mb-4">{category}</h3>
-          <ul class="space-y-2">
-            {skillsList.map(skill => <li>{skill}</li>)}
-          </ul>
-        </div>
-      ))}
-    </div>
-  </section>
+<Layout title={`About | ${personal.name}`}>
   
-  <section class="py-16">
-    <h2 class="text-3xl font-bold text-center mb-12 text-accent-green">Contact</h2>
-    <div class="text-center max-w-xl mx-auto">
-        <p class="text-lg text-gray-300 mb-4">
-            I'm always open to discussing new projects, creative ideas, or opportunities. Feel free to reach out!
-        </p>
-        <a href={`mailto:${personalData.contact.email}`} class="text-accent-orange text-xl font-jetbrains-mono hover:underline">
-            {personalData.contact.email}
-        </a>
-    </div>
-  </section>
+  <AboutSection />
+
+  <Expertise />
+
+  <Experience />
+
+  <Education />
+
+  <Certifications />
+
+  <Highlights />
+
+  <Achievements />
+
+  <Contact />
+
 </Layout>

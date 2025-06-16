@@ -4,27 +4,35 @@ export interface Experience {
   period: string;
   description: string;
   highlights: string[];
+  utilizations: string[];
 }
 
 export const experiences: Experience[] = [
+
   {
-    company: "Innovative Tech Inc.",
-    role: "Frontend Developer",
-    period: "Jan 2022 - Present",
-    description: "Developed and maintained user-facing features for a large-scale SaaS platform, focusing on performance and accessibility.",
+    company: "H2 Software Consulting Inc.",
+    role: "Software Developer Intern",
+    period: "August 2025 - November 2025",
+    description: "Collaborated and co-developed a full stack web app using Laravel framework with React and Typescript for client's custom software project",
     highlights: [
-      "Led the migration of a legacy jQuery codebase to SvelteKit, improving load times by 40%.",
-      "Built a reusable component library with Storybook, increasing development speed by 25%.",
-      "Collaborated with UI/UX designers to implement pixel-perfect, responsive designs.",
+      "Worked on the backend using Laravel to implement RESTful APIs and database management.",
+      "Developed frontend components using React and integrated them with backend APIs.",
+      "Participated in code reviews and followed Agile methodologies to ensure timely delivery of features.",
     ],
+    utilizations: ["Laravel", "React", "Typescript", "MySQL", "Git", "Docker", "Postman"],
   },
-  // Add more experiences here
+  {
+    company: "Institute of Flexible Learning and Distance Education",
+    role: "Frontend Developer Intern",
+    period: "February 2025 - May 2025",
+    description: "Developed a landing page website using Astro framework for department's website and tasked to create a functional LMS mockup using Next.js, Typescript and Tailwind CSS",
+    highlights: [
+      "Made a simple Next.js web app that functions as LMS similar to Udemy based on my Figma design for an upcoming e-Learning program.",
+      "Built a landing page website with highly organized React project and followed good coding practices to keep the maintainability codebase repository.",
+      "Collaborated with  UI/UX designers to implement pixel-perfect, responsive designs.",
+    ],
+    utilizations: ["Next.js", "Astro", "React", "Typescript", "Tailwind CSS", "Git", "Vercel", "Figma"],
+  },
+
 ];
 
-export const education = [
-    {
-        institution: "University of Technology",
-        degree: "Bachelor of Science in Computer Science",
-        period: "2018 - 2022",
-    }
-]

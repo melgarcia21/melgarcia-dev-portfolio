@@ -24,4 +24,7 @@ pnpm-debug.log*
 .idea/
 
 # vs code
-.vscode
+.vscode/
+
+# TODO list
+TODO.md

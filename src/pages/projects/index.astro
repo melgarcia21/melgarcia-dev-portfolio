@@ -1,13 +1,15 @@
+<!-- src\pages\projects\index.astro -->
+
 ---
 import Layout from '../../layouts/Layout.astro';
-import ProjectGrid from '../../components/ProjectGrid.svelte';
-import { personalData } from '../../data/personal';
+import Projects from '../../components/projects/Projects.svelte';
+import { personal } from '../../data/personal';
 ---
 
-<Layout title={`Projects | ${personalData.name}`}>
+<Layout title={`Projects | ${personal.name}`}>
   <div class="text-center mb-12 fade-in">
     <h1 class="text-4xl font-bold">My Work & Projects</h1>
     <p class="text-gray-400 mt-2">A collection of projects I've built and contributed to.</p>
   </div>
-  <ProjectGrid client:visible />
+  <Projects client:load />
 </Layout>

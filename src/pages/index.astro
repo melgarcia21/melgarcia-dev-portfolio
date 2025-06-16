@@ -1,32 +1,27 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.svelte';
-import ProjectGrid from '../components/ProjectGrid.svelte';
-import ExperienceCard from '../components/ExperienceCard.svelte';
-import { personalData } from '../data/personal';
-import { experiences } from '../data/experience';
+
+import Hero from '../components/home/Hero.svelte';
+import Expertise from '../components/home/Expertise.svelte';
+import Projects from '../components/home/Projects.svelte';
+import Experience from '../components/home/Experience.svelte';
+
+import BoxBackground from '../components/home/BoxBackground.svelte';
+
+import { personal } from '../data/personal.ts';
+
 ---
 
-<Layout title={`Home | ${personalData.name}`} description={`Mel Garcia Developer Portfolio`}>
-  
-  <Hero client:visible />
+<Layout title={`Home | ${personal.name}`} description={`${personal.name} Developer Portfolio`}>
 
-  <section class="py-16">
-    <h2 class="text-3xl font-bold text-center mb-12 text-accent-green">Featured Projects</h2>
-    <ProjectGrid featured={true} client:visible />
-    <div class="text-center mt-12">
-      <a href="/projects" class="inline-block bg-accent-orange text-white font-bold py-3 px-6 rounded hover:bg-opacity-90 transition-colors">
-        View All Projects
-      </a>
-    </div>
-  </section>
+  <Hero />
 
-  <section class="py-16">
-    <h2 class="text-3xl font-bold text-center mb-12 text-accent-green">Experience</h2>
-    <div class="space-y-8 max-w-3xl mx-auto fade-in">
-        {experiences.map(exp => (
-            <ExperienceCard experience={exp} />
-        ))}
-    </div>
-  </section>
+  <BoxBackground />
+
+  <Expertise />
+
+  <Projects />
+
+  <Experience />
+
 </Layout>

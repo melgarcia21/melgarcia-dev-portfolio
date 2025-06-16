@@ -1,23 +1,8 @@
-<script lang="ts">
-  import { personalData } from '../data/personal';
-  import GridBackground from './ui/GridBackground.svelte';
-  const year = new Date().getFullYear();
-</script>
-
-
-
-<footer class="text-center my-8 py-8 border-t border-gray-800">
-
-    <GridBackground/>
-
-    <div class="flex justify-center gap-4 mb-4">
-        {#each personalData.contact.social as socialLink}
-            <a href={socialLink.url} target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors">
-                {socialLink.name}
-            </a>
-        {/each}
-    </div>
-    <p class="text-gray-500 text-sm">
+<footer class="flex justify-center items-center m-12 p-12 border-t border-gray-800">
+    <p class="text-gray-500 text-sm mx-2">
         © 2024 Mel Garcia. All Rights Reserved.
+    </p>
+    <p class="text-gray-500 text-sm mx-2 flex items-center">
+        Built with <img src="/logo/Astro.svg" alt="Astro" class="inline h-6 align-text-bottom ml-1">
     </p>
 </footer>
