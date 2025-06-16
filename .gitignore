@@ -26,5 +26,8 @@ pnpm-debug.log*
 # vs code
 .vscode/
 
+# AI Context
+AI.md
+
 # TODO list
 TODO.md
