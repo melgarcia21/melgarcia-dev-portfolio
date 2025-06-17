@@ -4,7 +4,7 @@
   export let currentPath: string;
 
   const navLinks = [
-    { href: '/', text: 'Home' },
+    { href: '/', text: 'Main' },
     { href: '/projects', text: 'Projects' },
     { href: '/about', text: 'About' },
   ];

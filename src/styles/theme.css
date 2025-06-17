@@ -1,0 +1,51 @@
+/* /src/styles/theme.css */
+
+:root {
+  /* Default (Dark Mode) */
+  --bg-color: #000000;
+  --primary-text: #FFFFFF;
+  --secondary-text: #CCCCCC;
+  --tertiary-text: #999999;
+  --accent-gray: #808080;
+  --accent-dark-gray: #333333;
+
+  --accent-blue: #3592FF;
+  --accent-green: #59A869;
+  --accent-purple: #6B73FF;
+  --accent-orange: #FF6B35;
+  --accent-red: #FF4C4C;
+  --accent-gold: #FFD700;
+
+  --accent-ocean: #00B2F7;
+  --accent-cream: #F5F5DC;
+  --accent-leaf: #A8D5BA;
+  --accent-sky: #87CEEB;
+  --accent-sunset: #FF7F50;
+  --accent-berry: #FF69B4;
+
+  --tile: rgba(0, 182, 247, 0.1);
+}
+
+[data-theme="light"] {
+  --bg-color: #FFFFFF;
+  --primary-text: #000000;
+  --secondary-text: #333333;
+  --tertiary-text: #666666;
+  --accent-gray: #B0B0B0;
+
+  --accent-blue: #007BFF;
+  --accent-green: #28A745;
+  --accent-purple: #6F42C1;
+  --accent-orange: #FF5722;
+  --accent-red: #DC3545;
+  --accent-gold: #FFC107;
+
+  --accent-ocean: #00B2F7;
+  --accent-cream: #F5F5DC;
+  --accent-leaf: #A8D5BA;
+  --accent-sky: #87CEEB;
+  --accent-sunset: #FF7F50;
+  --accent-berry: #FF69B4;
+
+  --tile: rgba(0, 182, 247, 0.06);
+}

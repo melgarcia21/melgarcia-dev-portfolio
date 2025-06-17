@@ -1,14 +1,14 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import { projects, type Project } from '../../data/projects';
+/* src/pages/projects/[slug].astro */
+import Layout from "../../layouts/Layout.astro";
+import { projects, type Project } from "../../data/projects";
 
+// ... (getStaticPaths function remains the same)
 export async function getStaticPaths() {
-  return projects.map((project) => {
-    return {
-      params: { slug: project.slug },
-      props: { project },
-    };
-  });
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
 }
 
 interface Props {
@@ -19,53 +19,77 @@ const { project } = Astro.props;
 ---
 
 <Layout title={`${project.title} | Project`}>
-    <article class="fade-in">
-        <!-- Project Header -->
-        <header class="text-center my-12">
-            <h1 class="text-4xl md:text-5xl font-bold text-accent-orange">{project.title}</h1>
-            <p class="text-lg text-gray-400 mt-2">{project.description}</p>
-        </header>
+  <!-- 
+        MODIFICATION:
+        - Changed `transition:name` to the new `transition:name`.
+     -->
+  <article
+    transition:name={`project-card-${project.slug}`}
+    transition:animate="fade"
+  >
+    <!-- The content inside the article remains the same -->
+    <header class="text-center my-12">
+      <h1 class="text-4xl md:text-5xl font-bold text-accent-orange">
+        {project.title}
+      </h1>
+      <p class="text-lg text-gray-400 mt-2">{project.description}</p>
+    </header>
 
-        <!-- Hero Image -->
-        <img src={project.image} alt={`Hero image for ${project.title}`} class="w-full h-auto rounded-lg shadow-lg mb-12 border border-gray-800"/>
+    <img
+      src={project.image}
+      alt={`Hero image for ${project.title}`}
+      class="w-full h-auto rounded-lg shadow-lg mb-12 border border-gray-800"
+    />
 
-        <!-- Project Details -->
-        <div class="grid md:grid-cols-3 gap-12">
-            <div class="md:col-span-2">
-                <h2 class="text-2xl font-bold mb-4 text-accent-green">About the Project</h2>
-                <div class="prose prose-invert max-w-none text-gray-300">
-                   <p>{project.details}</p>
-                </div>
-            </div>
-
-            <aside>
-                <h2 class="text-2xl font-bold mb-4 text-accent-green">Tech Stack & Links</h2>
-                <div class="bg-gray-900/50 p-4 rounded-lg border border-gray-800">
-                    <h3 class="font-bold font-jetbrains-mono mb-3">Technologies Used</h3>
-                    <ul class="flex flex-wrap gap-2 mb-6">
-                        {project.techStack.map(tech => (
-                            <li class="bg-gray-800 text-accent-blue text-sm px-2 py-1 rounded">{tech}</li>
-                        ))}
-                    </ul>
-                    <h3 class="font-bold font-jetbrains-mono mb-3">Links</h3>
-                    <div class="flex flex-col space-y-3">
-                         {project.links.preview && (
-                            <a href={project.links.preview} target="_blank" class="bg-accent-orange text-white text-center font-bold py-2 px-4 rounded hover:bg-opacity-90 transition-colors">Live Preview</a>
-                         )}
-                         {project.links.github && (
-                            <a href={project.links.github} target="_blank" class="bg-gray-700 text-white text-center font-bold py-2 px-4 rounded hover:bg-gray-600 transition-colors">View on GitHub</a>
-                         )}
-                    </div>
-                </div>
-            </aside>
+    <div class="grid md:grid-cols-3 gap-12">
+      <div class="md:col-span-2">
+        <h2 class="text-2xl font-bold mb-4 text-accent-green">
+          About the Project
+        </h2>
+        <div class="prose prose-invert max-w-none text-gray-300">
+          <p>{project.details}</p>
         </div>
-    </article>
+      </div>
+
+      <aside>
+        <h2 class="text-2xl font-bold mb-4 text-accent-green">
+          Tech Stack & Preview
+        </h2>
+        <div class="bg-gray-900/50 p-4 rounded-lg border border-gray-800">
+          <h3 class="font-bold font-jetbrains-mono mb-3">Technologies Used</h3>
+          <ul class="flex flex-wrap gap-2 mb-6">
+            {
+              project.techStack.map((tech) => (
+                <li class="bg-gray-800 text-accent-blue text-sm px-2 py-1 rounded">
+                  {tech}
+                </li>
+              ))
+            }
+          </ul>
+          <h3 class="font-bold font-jetbrains-mono mb-3">Links</h3>
+          <div class="flex flex-col space-y-3">
+            {
+              project.links.preview && (
+                <a
+                  href={project.links.preview}
+                  target="_blank"
+                  class="bg-accent-orange text-white text-center font-bold py-2 px-4 rounded hover:bg-opacity-90 transition-colors"
+                >
+                  Live Preview
+                </a>
+              )
+            }
+
+          </div>
+        </div>
+      </aside>
+    </div>
+  </article>
 </Layout>
 
 <style>
-/* Basic prose styles for project details */
-.prose p {
+  .prose p {
     margin-bottom: 1em;
     line-height: 1.7;
-}
+  }
 </style>

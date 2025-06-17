@@ -1,7 +1,9 @@
 ---
+/* src/layouts/Layout.astro */
+
 import Navbar from '../components/Navbar.svelte';
 import Footer from '../components/Footer.svelte';
-import '../styles/global.css';
+import '../styles/globals.css';
 
 interface Props {
 	title: string;
@@ -21,7 +23,10 @@ const currentPath = Astro.url.pathname;
 		<link rel="icon" type="image/x-icon" href="/logo/MG-Logo.svg"/>
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+
+
 	</head>
+
 	<body class="bg-black text-white selection:bg-accent-blue selection:text-white">
 		<Navbar currentPath={currentPath} />
 		<main class="container mx-auto px-4 pt-28 md:pt-36">

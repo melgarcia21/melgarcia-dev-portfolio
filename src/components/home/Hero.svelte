@@ -13,11 +13,10 @@
 	];
 
 	const bio =
-		'Dev specializing in building websites, web applications, and mobile apps using modern frameworks and technologies.';
+		'Dev specializing in building websites, web applications, and mobile apps using modern frameworks and latest technologies.';
 </script>
 
 <section class="relative fade-in">
-
 
 	<div class="relative z-10 mx-auto px-4">
 		<div class="flex flex-col-reverse items-center md:flex-row md:items-start">

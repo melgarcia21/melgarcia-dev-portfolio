@@ -1,8 +1,8 @@
 <footer class="flex justify-center items-center m-12 p-12 border-t border-gray-800">
-    <p class="text-gray-500 text-sm mx-2">
-        © 2024 Mel Garcia. All Rights Reserved.
+    <p class="text-md mx-2">
+        © 2025 Mel Garcia. All Rights Reserved.
     </p>
-    <p class="text-gray-500 text-sm mx-2 flex items-center">
-        Built with <img src="/logo/Astro.svg" alt="Astro" class="inline h-6 align-text-bottom ml-1">
+    <p class="text-md mx-2 flex items-center">
+        This website is built with <img src="/logo/Astro.svg" alt="Astro" class="inline h-7 align-text-bottom ml-1"> & <img src="/logo/Svelte.svg" alt="Svelte" class="inline h-5 align-text-bottom ml-2">
     </p>
 </footer>

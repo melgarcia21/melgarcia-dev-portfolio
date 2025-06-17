@@ -1,0 +1,40 @@
+/* /src/styles/globals.css */
+
+@import "tailwindcss";
+
+@import "./theme.css";
+@import "./typography.css";
+@import "./utility.css";
+@import "./animations.css";
+
+
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap');
+
+/* Additional Styling */
+body {
+  background-color: var(--bg-color);
+  color: var(--primary-text);
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar styling */
+* {
+  scrollbar-width: normal;
+  -ms-overflow-style: normal;
+  scrollbar-color: var(--accent-dark-gray) transparent;
+  scrollbar-arrow-color: var(--accent-dark-gray);
+  scroll-behavior: smooth;
+
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+  border: 1px solid var(--accent-dark-gray);
+}
+
+*::-webkit-scrollbar {
+  display: normal;
+}

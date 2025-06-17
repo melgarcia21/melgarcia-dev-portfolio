@@ -14,13 +14,13 @@ import { personal } from '../data/personal.ts';
 
 <Layout title={`Home | ${personal.name}`} description={`${personal.name} Developer Portfolio`}>
 
-  <Hero />
+  <Hero client:visible />
 
   <BoxBackground />
 
   <Expertise />
 
-  <Projects />
+  <Projects client:visible />
 
   <Experience />
 
