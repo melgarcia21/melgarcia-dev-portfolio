@@ -2,6 +2,8 @@
 <script lang="ts">
   import { projects, type Project } from "../../data/projects";
   import ProjectCard from "../ui/ProjectCard.svelte";
+  import ProjectList from "../ui/ProjectList.svelte";
+
   import { fade } from "svelte/transition";
 
   // --- Filter State & Types ---
@@ -85,6 +87,7 @@
           {#each filteredProjects as project, i (project.slug)}
             <div in:fade={{ duration: 300, delay: i * 75 }}>
               <ProjectCard {project} />
+
             </div>
           {/each}
         </div>
@@ -97,4 +100,32 @@
       </div>
     {/if}
   </div>
+
+  <!-- Optional: Project List View -->
+  <div class="mt-12">
+    <h2 class="text-2xl font-bold mb-6">Project List View</h2>
+    
+    {#if filteredProjects.length > 0}
+    {#key selectedCategory}
+    <div class="grid grid-cols-1">
+      {#each filteredProjects as project, i (project.slug)}
+      <div in:fade={{ duration: 300, delay: i * 75}}>
+
+        <ProjectList {project} />
+
+      </div>
+      {/each}
+    </div>
+    {/key}
+    {:else}
+      <div class="flex flex-col items-center justify-center text-center bg-gray-800/50 p-12 rounded-lg mt-8">
+        <p class="text-2xl font-bold text-white mb-2">No Projects Found</p>
+        <p class="text-gray-400">There are no projects in the "{selectedCategory}" category.</p>
+      </div>
+    {/if}
+
+  </div>
+
+
+
 </div>

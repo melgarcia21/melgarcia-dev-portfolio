@@ -15,11 +15,9 @@
   onMount(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      // Show navbar if scrolling up or at the very top
       if (currentScrollY < lastScrollY || currentScrollY < 10) {
         visible = true;
       } else {
-        // Hide navbar if scrolling down
         visible = false;
       }
       lastScrollY = currentScrollY;
@@ -53,7 +51,6 @@
 </nav>
 
 <style>
-  /* Using a more explicit class for the font to ensure it's applied */
   .font-jetbrains-mono {
     font-family: 'JetBrains Mono', monospace;
   }

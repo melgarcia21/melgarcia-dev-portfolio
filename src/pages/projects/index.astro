@@ -4,6 +4,8 @@
 import Layout from '../../layouts/Layout.astro';
 import Projects from '../../components/projects/Projects.svelte';
 import { personal } from '../../data/personal';
+
+
 ---
 
 <Layout title={`Projects | ${personal.name}`}>
@@ -13,9 +15,11 @@ import { personal } from '../../data/personal';
     <p class="text-gray-400 mt-2">A collection of projects I've created.</p>
   </div>
   
-  <!-- The Svelte component now handles the entire interactive section -->
   <div class="container mx-auto px-4">
     <Projects client:load />
   </div>
+
+
+
 
 </Layout>

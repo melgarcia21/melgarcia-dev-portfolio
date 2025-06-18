@@ -1,4 +1,5 @@
 ---
+/* src\pages\index.astro */
 import Layout from '../layouts/Layout.astro';
 
 import Hero from '../components/home/Hero.svelte';
@@ -6,17 +7,13 @@ import Expertise from '../components/home/Expertise.svelte';
 import Projects from '../components/home/Projects.svelte';
 import Experience from '../components/home/Experience.svelte';
 
-import BoxBackground from '../components/home/BoxBackground.svelte';
-
 import { personal } from '../data/personal.ts';
 
 ---
 
-<Layout title={`Home | ${personal.name}`} description={`${personal.name} Developer Portfolio`}>
+<Layout title={`Dev | ${personal.name}`} description={`${personal.name} Developer Portfolio`}>
 
   <Hero client:visible />
-
-  <BoxBackground />
 
   <Expertise />
 
