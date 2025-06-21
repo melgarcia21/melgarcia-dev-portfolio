@@ -4,7 +4,6 @@
   import ProjectList from "../ui/ProjectList.svelte";
   import { fade, slide } from "svelte/transition";
 
-  // --- Filter State & Types ---
   type Category = "All" | "Website" | "Web App" | "Mobile App" | "Desktop App";
   type Language = "All" | "TypeScript" | "PHP" | "C#" | "Python";
   type ViewMode = "grid" | "list";
@@ -13,10 +12,8 @@
   let selectedLanguage: Language = "All";
   let viewMode: ViewMode = "grid";
 
-  // State for the language dropdown
   let isLangDropdownOpen = false;
 
-  // --- Data for UI Generation ---
   const categories: Category[] = [
     "All",
     "Website",
@@ -39,8 +36,6 @@
     Python: "Python",
   };
 
-  // --- Reactive Filtering Logic ---
-  // This block now filters by BOTH category and language.
   let filteredProjects: Project[] = [];
   $: {
     filteredProjects = projects.filter((project) => {

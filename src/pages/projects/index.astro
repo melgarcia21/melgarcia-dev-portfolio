@@ -1,15 +1,10 @@
 ---
 /* src/pages/projects/index.astro */
-
 import Layout from '../../layouts/Layout.astro';
 import Projects from '../../components/projects/Projects.svelte';
-import { personal } from '../../data/personal';
-
-
 ---
 
-<Layout title={`Projects | ${personal.name}`}>
-  
+<Layout title={`Projects | Mel Garcia`}>
   <div class="text-center mb-12 fade-in">
     <h1 class="text-4xl font-bold">My Works & Projects</h1>
     <p class="text-gray-400 mt-2">A collection of projects I've created.</p>
@@ -18,8 +13,4 @@ import { personal } from '../../data/personal';
   <div class="container mx-auto px-4">
     <Projects client:load />
   </div>
-
-
-
-
 </Layout>

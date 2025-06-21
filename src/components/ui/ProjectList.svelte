@@ -12,7 +12,7 @@
 
   const categoryIconMap = {
     "Web App": "WebApp",
-    Website: "Website",
+    "Website": "Website",
     "Mobile App": "Android",
     "Desktop App": "Windows",
   };

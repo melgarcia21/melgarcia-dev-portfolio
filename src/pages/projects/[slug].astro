@@ -1,9 +1,9 @@
 ---
-/* src/pages/projects/[slug].astro */
 import Layout from "../../layouts/Layout.astro";
 import { projects, type Project } from "../../data/projects";
+// Import the new carousel component
+import ProjectCarousel from "../../components/ui/ProjectCarousel.svelte";
 
-// ... (getStaticPaths function remains the same)
 export async function getStaticPaths() {
   return projects.map((project) => ({
     params: { slug: project.slug },
@@ -19,15 +19,8 @@ const { project } = Astro.props;
 ---
 
 <Layout title={`${project.title} | Project`}>
-  <!-- 
-        MODIFICATION:
-        - Changed `transition:name` to the new `transition:name`.
-     -->
-  <article
-    transition:name={`project-card-${project.slug}`}
-    transition:animate="fade"
-  >
-    <!-- The content inside the article remains the same -->
+
+  <article>
     <header class="text-center my-12">
       <h1 class="text-4xl md:text-5xl font-bold text-accent-orange">
         {project.title}
@@ -35,12 +28,16 @@ const { project } = Astro.props;
       <p class="text-lg text-gray-400 mt-2">{project.description}</p>
     </header>
 
-    <img
-      src={project.image}
-      alt={`Hero image for ${project.title}`}
-      class="w-full h-auto rounded-lg shadow-lg mb-12 border border-gray-800"
-    />
+    <!-- 
+      MODIFICATION: Replaced the static image with the interactive carousel.
+      - `client:visible` hydrates the component when it enters the viewport.
+      - `transition:name` is applied here to link with the ProjectCard.
+    -->
+    <div transition:name={`project-card-${project.slug}`}>
+      <ProjectCarousel media={project.media} client:visible />
+    </div>
 
+    <!-- The rest of the layout remains the same -->
     <div class="grid md:grid-cols-3 gap-12">
       <div class="md:col-span-2">
         <h2 class="text-2xl font-bold mb-4 text-accent-green">
@@ -55,31 +52,26 @@ const { project } = Astro.props;
         <h2 class="text-2xl font-bold mb-4 text-accent-green">
           Tech Stack & Preview
         </h2>
-        <div class="bg-gray-900/50 p-4 rounded-lg border border-gray-800">
+        <div>
           <h3 class="font-bold font-jetbrains-mono mb-3">Technologies Used</h3>
           <ul class="flex flex-wrap gap-2 mb-6">
-            {
-              project.techStack.map((tech) => (
-                <li class="bg-gray-800 text-accent-blue text-sm px-2 py-1 rounded">
-                  {tech}
-                </li>
-              ))
-            }
+            {project.techStack.map((tech) => (
+              <li class="bg-gray-800 text-accent-blue text-sm px-2 py-1 rounded">
+                {tech}
+              </li>
+            ))}
           </ul>
           <h3 class="font-bold font-jetbrains-mono mb-3">Links</h3>
           <div class="flex flex-col space-y-3">
-            {
-              project.links.preview && (
-                <a
-                  href={project.links.preview}
-                  target="_blank"
-                  class="bg-accent-orange text-white text-center font-bold py-2 px-4 rounded hover:bg-opacity-90 transition-colors"
-                >
-                  Live Preview
-                </a>
-              )
-            }
-
+            {project.links.preview && (
+              <a
+                href={project.links.preview}
+                target="_blank"
+                class="bg-accent-blue text-white text-center font-bold py-2 px-4 rounded hover:bg-opacity-90 transition-colors"
+              >
+                Live Preview
+              </a>
+            )}
           </div>
         </div>
       </aside>
