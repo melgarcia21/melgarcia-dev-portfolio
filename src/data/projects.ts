@@ -1,18 +1,17 @@
-/* src/data/projects.ts */
+/* src\data\projects.ts */
 
-// MODIFICATION: The Project interface is updated for the new media carousel.
+/* All of the files such as imagaes and videos exist have correct directory */
+
 export interface Project {
   slug: string;
   title: string;
   category: "Web App" | "Website" | "Mobile App" | "Desktop App";
-  
-  // MODIFICATION: `thumbnail` is now an object for different layouts.
+
   thumbnail: {
     landscape: string;
     portrait: string;
   };
 
-  // MODIFICATION: `image` and `video` are replaced by a `media` array.
   media: {
     type: 'image' | 'video';
     src: string;
@@ -33,218 +32,167 @@ export const projects: Project[] = [
     title: "Project One - SaaS Dashboard",
     category: "Web App",
     thumbnail: {
-        landscape: "/images/projects/project-1.png",
-        portrait: "/images/projects/project-one-portrait.jpg"
+      landscape: "/images/projects/project-1-tl.jpg",
+      portrait: "/images/projects/project-1-pt.jpg"
     },
     media: [
       { type: 'video', src: '/videos/project-1-demo.mp4' },
-      { type: 'image', src: '/images/projects/project-1.png' },
-      { type: 'image', src: '/images/projects/project-one-img1.png' },
-      { type: 'image', src: '/images/projects/project-one-img2.png' },
-      { type: 'image', src: '/images/projects/project-one-img3.png' },
-      { type: 'image', src: '/images/projects/project-one-img4.png' },
+      { type: 'image', src: '/images/projects/project-1-img1.jpg' },
+      { type: 'image', src: '/images/projects/project-1-img2.png' },
+      { type: 'image', src: '/images/projects/project-1-img3.jpg' },
+      { type: 'image', src: '/images/projects/project-1-img4.jpg' },
+      { type: 'image', src: '/images/projects/project-1-img5.jpg' },
     ],
     techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Vercel", "Express.js", "JavaScript", "MongoDB", "Mongoose", "JSON"],
     description: "A comprehensive SaaS dashboard for managing clients and subscriptions.",
     details: "This project was built from the ground up to provide a seamless user experience for business owners. It features real-time data visualization, secure authentication, and a fully responsive interface that works on all devices. The main challenge was to handle large datasets efficiently without compromising on performance.",
     links: { preview: "/projects/project-one" },
   },
-
   {
     slug: "project-two",
     title: "Project Two - E-Commerce Platform",
     category: "Website",
     thumbnail: {
-        landscape: "/images/projects/project-2.png",
-        portrait: "/images/projects/project-two-portrait.jpg"
+      landscape: "/images/projects/project-2-tl.jpg",
+      portrait: "/images/projects/project-2-tp.jpg"
     },
     media: [
       { type: 'video', src: '/videos/project-2-demo.mp4' },
-      { type: 'image', src: '/images/projects/project-2.png' },
-      { type: 'image', src: '/images/projects/project-two-img1.png' },
-      { type: 'image', src: '/images/projects/project-two-img2.png' },
-      { type: 'image', src: '/images/projects/project-two-img3.png' },
-      { type: 'image', src: '/images/projects/project-two-img4.png' },
+      { type: 'image', src: '/images/projects/project-2-img1.jpg' },
+      { type: 'image', src: '/images/projects/project-2-img2.png' },
+      { type: 'image', src: '/images/projects/project-2-img3.jpg' },
+      { type: 'image', src: '/images/projects/project-2-img4.jpg' },
+      { type: 'image', src: '/images/projects/project-2-img5.jpg' },
     ],
     techStack: ["Next.js", "React", "Node.js", "MongoDB", "AWS"],
     description: "A scalable e-commerce platform for small businesses.",
     details: "This platform allows users to browse products, add them to a cart, and securely checkout. It includes an admin dashboard for managing inventory and orders. The project was optimized for SEO and performance to ensure a smooth shopping experience.",
     links: { preview: "/projects/project-two" },
   },
-
   {
     slug: "project-three",
     title: "Project Three - Fitness Tracker App",
     category: "Mobile App",
     thumbnail: {
-        landscape: "/images/projects/project-3-thumb.jpg",
-        portrait: "/images/projects/project-3-portrait.jpg"
+      landscape: "/images/projects/project-3-tl.jpg",
+      portrait: "/images/projects/project-3-tp.jpg"
     },
     media: [
       { type: 'video', src: '/videos/project-3-demo.mp4' },
-      { type: 'image', src: '/images/projects/project-3-hero.jpg' },
-      { type: 'image', src: '/images/projects/project-three-img1.png' },
-      { type: 'image', src: '/images/projects/project-three-img2.png' },
-      { type: 'image', src: '/images/projects/project-three-img3.png' },
-      { type: 'image', src: '/images/projects/project-three-img4.png' },
+      { type: 'image', src: '/images/projects/project-3-img1.jpg' },
+      { type: 'image', src: '/images/projects/project-3-img2.png' },
+      { type: 'image', src: '/images/projects/project-3-img3.jpg' },
+      { type: 'image', src: '/images/projects/project-3-img4.jpg' },
+      { type: 'image', src: '/images/projects/project-3-img5.jpg' },
     ],
     techStack: ["Flutter", "Firebase", "Dart", "Python"],
     description: "A mobile app for tracking workouts and fitness goals.",
     details: "This app allows users to log their workouts, set fitness goals, and track progress over time. It includes features like push notifications, social sharing, and integration with wearable devices. The app was designed with a focus on user engagement and retention.",
     links: { preview: "/projects/project-three" },
   },
-
   {
     slug: "project-four",
     title: "Project Four - Portfolio Website",
     category: "Website",
     thumbnail: {
-        landscape: "/images/projects/project-4-thumb.jpg",
-        portrait: "/images/projects/project-4-portrait.jpg"
+      landscape: "/images/projects/project-4-tl.jpg",
+      portrait: "/images/projects/project-4-tp.jpg"
     },
     media: [
       { type: 'video', src: '/videos/project-4-demo.mp4' },
-      { type: 'image', src: '/images/projects/project-4-hero.jpg' },
-      { type: 'image', src: '/images/projects/project-four-img1.png' },
-      { type: 'image', src: '/images/projects/project-four-img2.png' },
-      { type: 'image', src: '/images/projects/project-four-img3.png' },
-      { type: 'image', src: '/images/projects/project-four-img4.png' },
+      { type: 'image', src: '/images/projects/project-4-img1.jpg' },
+      { type: 'image', src: '/images/projects/project-4-img2.jpg' },
+      { type: 'image', src: '/images/projects/project-4-img3.jpg' },
+      { type: 'image', src: '/images/projects/project-4-img4.jpg' },
+      { type: 'image', src: '/images/projects/project-4-img5.jpg' },
     ],
     techStack: ["Astro", "Tailwind CSS", "TypeScript", "Svelte"],
     description: "A personal portfolio website to showcase projects and skills.",
     details: "This website was built to highlight my professional experience and projects. It includes a blog section, contact form, and animations for an engaging user experience. The site is fully responsive and optimized for fast loading times.",
     links: { preview: "https://example.com" },
   },
-
   {
     slug: "project-five",
     title: "Project Five - AI Interviewer",
     category: "Web App",
     thumbnail: {
-        landscape: "/images/projects/project-5-thumb.jpg",
-        portrait: "/images/projects/project-5-portrait.jpg"
+      landscape: "/images/projects/project-5-tl.jpg",
+      portrait: "/images/projects/project-5-tp.jpg"
     },
     media: [
       { type: 'video', src: '/videos/project-5-demo.mp4' },
-      { type: 'image', src: '/images/projects/project-5-hero.jpg' },
-      { type: 'image', src: '/images/projects/project-five-img1.png' },
-      { type: 'image', src: '/images/projects/project-five-img2.png' },
-      { type: 'image', src: '/images/projects/project-five-img3.png' },
-      { type: 'image', src: '/images/projects/project-five-img4.png' },
+      { type: 'image', src: '/images/projects/project-5-img1.jpg' },
+      { type: 'image', src: '/images/projects/project-5-img2.jpg' },
+      { type: 'image', src: '/images/projects/project-5-img3.jpg' },
+      { type: 'image', src: '/images/projects/project-5-img4.jpg' },
+      { type: 'image', src: '/images/projects/project-5-img5.jpg' },
     ],
     techStack: ["Next.js", "TypeScript", "Express.js", "OpenAI", "Vapi"],
     description: "An AI-powered web app that simulates job interviews.",
     details: "This application helps users practice for job interviews by simulating real interview scenarios. It uses AI to generate questions and provide feedback on user responses. The app was designed to be user-friendly and accessible, with a focus on helping users improve their interview skills.",
     links: { preview: "/projects/project-five" },
   },
-
   {
     slug: "project-six",
-    title: "Project Six - AI Content Generator",
-    category: "Web App",
+    title: "Project Six - Task Management App",
+    category: "Mobile App",
     thumbnail: {
-        landscape: "/images/projects/project-6-thumb.jpg",
-        portrait: "/images/projects/project-6-portrait.jpg"
+      landscape: "/images/projects/project-6-tl.jpg",
+      portrait: "/images/projects/project-6-tp.jpg"
     },
     media: [
       { type: 'video', src: '/videos/project-6-demo.mp4' },
-      { type: 'image', src: '/images/projects/project-6-hero.jpg' },
-      { type: 'image', src: '/images/projects/project-six-img1.png' },
-      { type: 'image', src: '/images/projects/project-six-img2.png' },
-      { type: 'image', src: '/images/projects/project-six-img3.png' },
-      { type: 'image', src: '/images/projects/project-six-img4.png' },
+      { type: 'image', src: '/images/projects/project-6-img1.jpg' },
+      { type: 'image', src: '/images/projects/project-6-img2.jpg' },
+      { type: 'image', src: '/images/projects/project-6-img3.jpg' },
+      { type: 'image', src: '/images/projects/project-6-img4.jpg' },
+      { type: 'image', src: '/images/projects/project-6-img5.jpg' },
     ],
-    techStack: ["Next.js", "Google Gemini", "TypeScript", "Python"],
-    description: "An AI-powered web app that generates content based on user input.",
-    details: "This application leverages Google Gemini to create high-quality content for various use cases, including blog posts, social media updates, and marketing copy. Users can input a topic or keyword, and the AI generates relevant content. The app includes features for customizing the tone, style, and length of the generated content.",
-    links: { preview: "https://ai-content-generator.example.com" },
+    techStack: ["Flutter", "Firebase", "Dart", "Google Gemini", "Python"],
+    description: "A mobile app for managing tasks and to-do lists.",
+    details: "This app helps users organize their tasks and to-do lists efficiently. It includes features like task categorization, due dates, and reminders. The app was designed to be intuitive and easy to use, with a clean and modern interface. It also includes collaboration features for sharing tasks with team members.",
+    links: { preview: "/projects/project-six" },
   },
-
   {
     slug: "project-seven",
-    title: "Project Seven - Social Media App",
-    category: "Mobile App",
+    title: "Project Seven - Inventory Management System",
+    category: "Desktop App",
     thumbnail: {
-        landscape: "/images/projects/project-7-thumb.jpg",
-        portrait: "/images/projects/project-7-portrait.jpg"
+      landscape: "/images/projects/project-7-tl.jpg",
+      portrait: "/images/projects/project-7-tp.jpg"
     },
     media: [
       { type: 'video', src: '/videos/project-7-demo.mp4' },
-      { type: 'image', src: '/images/projects/project-7-hero.jpg' },
-      { type: 'image', src: '/images/projects/project-seven-img1.png' },
-      { type: 'image', src: '/images/projects/project-seven-img2.png' },
-      { type: 'image', src: '/images/projects/project-seven-img3.png' },
-      { type: 'image', src: '/images/projects/project-seven-img4.png' },
-    ],
-    techStack: ["React Native", "Firebase", "TypeScript"],
-    description: "A cross-platform social media app for sharing photos and connecting with friends.",
-    details: "This app allows users to create profiles, share photos, and connect with friends. It includes features like real-time notifications, direct messaging, and a news feed. The app was designed with a focus on performance and user experience, ensuring smooth navigation and fast loading times.",
-    links: { preview: "/projects/project-seven" },
-  },
-
-  {
-    slug: "project-eight",
-    title: "Project Eight - Task Management App",
-    category: "Mobile App",
-    thumbnail: {
-        landscape: "/images/projects/project-8-thumb.jpg",
-        portrait: "/images/projects/project-8-portrait.jpg"
-    },
-    media: [
-      { type: 'video', src: '/videos/project-8-demo.mp4' },
-      { type: 'image', src: '/images/projects/project-8-hero.jpg' },
-      { type: 'image', src: '/images/projects/project-eight-img1.png' },
-      { type: 'image', src: '/images/projects/project-eight-img2.png' },
-      { type: 'image', src: '/images/projects/project-eight-img3.png' },
-      { type: 'image', src: '/images/projects/project-eight-img4.png' },
-    ],
-    techStack: ["Flutter", "Firebase", "Dart"],
-    description: "A mobile app for managing tasks and to-do lists.",
-    details: "This app helps users organize their tasks and to-do lists efficiently. It includes features like task categorization, due dates, and reminders. The app was designed to be intuitive and easy to use, with a clean and modern interface. It also includes collaboration features for sharing tasks with team members.",
-    links: { preview: "/projects/project-eight" },
-  },
-
-  {
-    slug: "project-nine",
-    title: "Project Nine - Inventory Management System",
-    category: "Desktop App",
-    thumbnail: {
-        landscape: "/images/projects/project-9-thumb.jpg",
-        portrait: "/images/projects/project-9-portrait.jpg"
-    },
-    media: [
-      { type: 'video', src: '/videos/project-9-demo.mp4' },
-      { type: 'image', src: '/images/projects/project-9-hero.jpg' },
-      { type: 'image', src: '/images/projects/project-nine-img1.png' },
-      { type: 'image', src: '/images/projects/project-nine-img2.png' },
-      { type: 'image', src: '/images/projects/project-nine-img3.png' },
-      { type: 'image', src: '/images/projects/project-nine-img4.png' },
+      { type: 'image', src: '/images/projects/project-7-img1.jpg' },
+      { type: 'image', src: '/images/projects/project-7-img2.jpg' },
+      { type: 'image', src: '/images/projects/project-7-img3.jpg' },
+      { type: 'image', src: '/images/projects/project-7-img4.jpg' },
+      { type: 'image', src: '/images/projects/project-7-img5.jpg' },
     ],
     techStack: [".NET Core", "CSharp", "MySQL"],
     description: "A desktop application for managing inventory and stock levels.",
     details: "This application is designed for businesses to manage their inventory and stock levels efficiently. It includes features like barcode scanning, stock level alerts, and reporting tools. The app was built with a focus on performance and reliability, ensuring that it can handle large datasets and provide accurate inventory tracking.",
-    links: { preview: "/projects/project-nine" },
+    links: { preview: "/projects/project-seven" },
   },
-  
   {
-    slug: "project-ten",
-    title: "Project Ten - Medium Clone Blogging Platform",
+    slug: "project-eight",
+    title: "Project Eight - Medium Clone Blogging Platform",
     category: "Web App",
     thumbnail: {
-        landscape: "/images/projects/project-10-thumb.jpg",
-        portrait: "/images/projects/project-10-portrait.jpg"
+      landscape: "/images/projects/project-8-tl.jpg",
+      portrait: "/images/projects/project-8-tp.jpg"
     },
     media: [
-      { type: 'video', src: '/videos/project-10-demo.mp4' },
-      { type: 'image', src: '/images/projects/project-10-hero.jpg' },
-      { type: 'image', src: '/images/projects/project-ten-img1.png' },
-      { type: 'image', src: '/images/projects/project-ten-img2.png' },
-      { type: 'image', src: '/images/projects/project-ten-img3.png' },
-      { type: 'image', src: '/images/projects/project-ten-img4.png' },
+      { type: 'video', src: '/videos/project-8-demo.mp4' },
+      { type: 'image', src: '/images/projects/project-8-img1.jpg' },
+      { type: 'image', src: '/images/projects/project-8-img2.jpg' },
+      { type: 'image', src: '/images/projects/project-8-img3.jpg' },
+      { type: 'image', src: '/images/projects/project-8-img4.jpg' },
+      { type: 'image', src: '/images/projects/project-8-img5.jpg' },
     ],
     techStack: ["Laravel", "React", "PostgreSQL", "PHP", "Tailwind CSS"],
     description: "A blogging platform similar to Medium, built with Laravel and React.",
     details: "This project is a full-featured blogging platform that allows users to create, edit, and publish articles. It includes features like user authentication, article categorization, and a rich text editor. The platform was designed to be user-friendly and visually appealing, with a focus on content creation and sharing.",
-    links: { preview: "/projects/project-ten" },
+    links: { preview: "/projects/project-eight" },
   },
 ];

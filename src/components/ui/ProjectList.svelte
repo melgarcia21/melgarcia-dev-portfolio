@@ -56,14 +56,9 @@
   }
 </script>
 
-<!-- 
-  Added `relative` and m-4 p-2 to act as the positioning context for the corner design.
-.
--->
+
 <div class="relative m-4 p-2 border-b border-slate-800 md:border-b-0">
-  <!-- 
-    DESKTOP-ONLY Corner Design
-  -->
+
   <div
     class="hidden md:block absolute inset-0 text-white pointer-events-none z-20
            transition-transform duration-250 ease-in-out"
@@ -103,10 +98,7 @@
     on:mousedown={handleMouseDown}
     on:mouseup={handleMouseUp}
   >
-    <!-- 
-      Main Container: 
-      - The `md:relative` class on this element is no longer strictly necessary but is kept for clarity.
-    -->
+
     <div
       class="grid grid-cols-[100px_1fr]
              md:relative md:flex md:flex-row md:rounded-lg md:border md:border-gray-800 md:aspect-[6/1]
@@ -155,7 +147,7 @@
         </div>
       </div>
 
-      <!-- [COLUMN 2] Details: Title, Description, Tech Stack -->
+
       <div
         class="flex flex-col justify-between
                   md:flex-1 md:p-6 md:bg-gradient-to-br md:from-gray-900 md:to-black md:border-l md:border-slate-700/50"

@@ -1,7 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { projects, type Project } from "../../data/projects";
-// Import the new carousel component
+
 import ProjectCarousel from "../../components/ui/ProjectCarousel.svelte";
 
 export async function getStaticPaths() {
@@ -28,16 +28,11 @@ const { project } = Astro.props;
       <p class="text-lg text-gray-400 mt-2">{project.description}</p>
     </header>
 
-    <!-- 
-      MODIFICATION: Replaced the static image with the interactive carousel.
-      - `client:visible` hydrates the component when it enters the viewport.
-      - `transition:name` is applied here to link with the ProjectCard.
-    -->
+
     <div transition:name={`project-card-${project.slug}`}>
       <ProjectCarousel media={project.media} client:visible />
     </div>
 
-    <!-- The rest of the layout remains the same -->
     <div class="grid md:grid-cols-3 gap-12">
       <div class="md:col-span-2">
         <h2 class="text-2xl font-bold mb-4 text-accent-green">

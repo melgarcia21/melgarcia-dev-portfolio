@@ -1,7 +1,9 @@
+<!-- src\components\ui\ProjectCarousel.svelte -->
+
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte';
 
-  // Define the type for a single media item
+
   type MediaItem = { type: 'image' | 'video'; src: string };
   export let media: MediaItem[] = [];
 
