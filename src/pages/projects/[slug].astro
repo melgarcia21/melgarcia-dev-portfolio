@@ -1,8 +1,11 @@
 ---
+/* src/pages/projects/[slug].astro */
 import Layout from "../../layouts/Layout.astro";
 import { projects, type Project } from "../../data/projects";
+// Import the new Svelte component
+import ProjectHeader from "../../components/ui/ProjectHeader.svelte";
 
-import ProjectCarousel from "../../components/ui/ProjectCarousel.svelte";
+
 
 export async function getStaticPaths() {
   return projects.map((project) => ({
@@ -11,65 +14,25 @@ export async function getStaticPaths() {
   }));
 }
 
-interface Props {
-  project: Project;
-}
-
-const { project } = Astro.props;
+const { project } = Astro.props as { project: Project };
 ---
 
 <Layout title={`${project.title} | Project`}>
-
   <article>
-    <header class="text-center my-12">
-      <h1 class="text-4xl md:text-5xl font-bold text-accent-orange">
-        {project.title}
-      </h1>
-      <p class="text-lg text-gray-400 mt-2">{project.description}</p>
-    </header>
-
-
+    <!--
+      Render the new component, passing the project data to it.
+      The transition:name is placed on the wrapper div for the Svelte component.
+    -->
     <div transition:name={`project-card-${project.slug}`}>
-      <ProjectCarousel media={project.media} client:visible />
+      <ProjectHeader {project} client:visible />
     </div>
 
-    <div class="grid md:grid-cols-3 gap-12">
-      <div class="md:col-span-2">
-        <h2 class="text-2xl font-bold mb-4 text-accent-green">
-          About the Project
-        </h2>
-        <div class="prose prose-invert max-w-none text-gray-300">
-          <p>{project.details}</p>
-        </div>
+    <!-- The "About" section remains here -->
+    <div class="mt-16">
+      <h2 class="text-3xl font-bold mb-4 text-slate-300">About the Project</h2>
+      <div class="prose prose-invert max-w-none text-gray-300">
+        <p>{project.details}</p>
       </div>
-
-      <aside>
-        <h2 class="text-2xl font-bold mb-4 text-accent-green">
-          Tech Stack & Preview
-        </h2>
-        <div>
-          <h3 class="font-bold font-jetbrains-mono mb-3">Technologies Used</h3>
-          <ul class="flex flex-wrap gap-2 mb-6">
-            {project.techStack.map((tech) => (
-              <li class="bg-gray-800 text-accent-blue text-sm px-2 py-1 rounded">
-                {tech}
-              </li>
-            ))}
-          </ul>
-          <h3 class="font-bold font-jetbrains-mono mb-3">Links</h3>
-          <div class="flex flex-col space-y-3">
-            {project.links.preview && (
-              <a
-                href={project.links.preview}
-                target="_blank"
-                class="bg-accent-blue text-white text-center font-bold py-2 px-4 rounded hover:bg-opacity-90 transition-colors"
-              >
-                Live Preview
-              </a>
-            )}
-          </div>
-        </div>
-      </aside>
     </div>
   </article>
 </Layout>

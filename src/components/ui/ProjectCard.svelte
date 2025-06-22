@@ -5,10 +5,13 @@
 
   let isHovered = false;
   let isVideoActive = false;
-
   let isPressed = false;
   let videoRef: HTMLVideoElement | null = null;
   let videoPlayTimeout: number;
+
+  // --- FIX: Get the video source from the media array ---
+  // The '$:' makes this reactive, though it's not strictly necessary here.
+  $: videoSrc = project.media.find((item) => item.type === "video")?.src;
 
   const categoryIconMap = {
     "Web App": "WebApp",
@@ -23,7 +26,8 @@
   // --- Event Handlers ---
   function handleMouseEnter() {
     isHovered = true;
-    if (videoRef && project.video) {
+    // --- FIX: Check for videoSrc instead of project.video ---
+    if (videoRef && videoSrc) {
       videoPlayTimeout = window.setTimeout(() => {
         if (videoRef) {
           isVideoActive = true;
@@ -48,17 +52,14 @@
   function handleMouseDown() {
     isPressed = true;
   }
-
   function handleMouseUp() {
     isPressed = false;
   }
-
 </script>
 
 <div class="m-4 p-2 relative">
   <div
-    class="absolute inset-0 pointer-events-none z-20
-           transition-transform duration-250 ease-in-out"
+    class="absolute inset-0 pointer-events-none z-20 transition-transform duration-250 ease-in-out"
     class:scale-[0.99]={isPressed}
     class:scale-[1.02]={isHovered && !isPressed}
     class:text-blue-300={isHovered || isPressed}
@@ -97,24 +98,21 @@
     on:mouseup={handleMouseUp}
   >
     <div
-      class="relative bg-clip-padding aspect-[2/3] lg:aspect-[4/3]
-             border border-gray-800
-             group-hover:border-blue-500/50 dark:group-hover:border-blue-400/50
-             group-hover:shadow-lg group-hover:shadow-blue-500/20 dark:group-hover:shadow-sky-400/20
-             transition-transform duration-250 ease-in-out group-hover:scale-[1.02] group-active:scale-[0.99]"
-      
+      class="relative bg-clip-padding aspect-[2/3] lg:aspect-[4/3] border border-gray-800 group-hover:border-blue-500/50 dark:group-hover:border-blue-400/50 group-hover:shadow-lg group-hover:shadow-blue-500/20 dark:group-hover:shadow-sky-400/20 transition-transform duration-250 ease-in-out group-hover:scale-[1.02] group-active:scale-[0.99]"
     >
       <div class="absolute inset-0 h-full w-full">
+        <!-- FIX: Use the 'landscape' thumbnail for the card view -->
         <img
-          src={project.thumbnail}
+          src={project.thumbnail.landscape}
           alt={project.title}
           class="w-full h-full object-cover transition-opacity duration-300"
-          class:opacity-0={isVideoActive && project.video}
+          class:opacity-0={isVideoActive && videoSrc}
         />
-        {#if project.video}
+        <!-- FIX: Check for videoSrc and use it -->
+        {#if videoSrc}
           <video
             bind:this={videoRef}
-            src={project.video}
+            src={videoSrc}
             class="absolute inset-0 w-full h-full object-cover transition-opacity duration-300"
             class:opacity-0={!isVideoActive}
             muted
@@ -127,10 +125,7 @@
       </div>
 
       <div
-        class="absolute bottom-0 w-full p-4 lg:p-6 border-t border-slate-900/10
-               bg-gradient-to-t from-white/60 to-white/20
-               dark:from-black/80 dark:to-black/50
-               backdrop-blur-md backdrop-saturate-200"
+        class="absolute bottom-0 w-full p-4 lg:p-6 border-t border-slate-900/10 bg-gradient-to-t from-white/60 to-white/20 dark:from-black/80 dark:to-black/50 backdrop-blur-md backdrop-saturate-200"
         style="background-clip: padding-box;"
       >
         <div class="relative z-10" aria-label="Project details">
@@ -170,8 +165,7 @@
                       ((e.currentTarget as HTMLImageElement).style.display =
                         "none")}
                   />
-
-                    <span class="font-inter font-bold">{tech}</span>
+                  <span class="font-inter font-bold">{tech}</span>
                 </div>
               {/each}
               {#if hiddenTechCount > 0}

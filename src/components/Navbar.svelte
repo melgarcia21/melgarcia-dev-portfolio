@@ -1,6 +1,5 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-
   export let currentPath: string;
 
   const navLinks = [
@@ -22,7 +21,6 @@
       }
       lastScrollY = currentScrollY;
     };
-
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   });

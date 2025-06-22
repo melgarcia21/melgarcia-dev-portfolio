@@ -3,29 +3,30 @@
   import type { Project } from "../../data/projects";
   export let project: Project;
 
-  // --- States for Desktop Interactivity ---
   let isHovered = false;
   let isVideoActive = false;
   let isPressed = false;
   let videoRef: HTMLVideoElement | null = null;
   let videoPlayTimeout: number;
 
+  // --- FIX: Get the video source from the media array ---
+  $: videoSrc = project.media.find((item) => item.type === "video")?.src;
+
   const categoryIconMap = {
     "Web App": "WebApp",
-    "Website": "Website",
+    Website: "Website",
     "Mobile App": "Android",
     "Desktop App": "Windows",
   };
 
-  // --- Logic for Mobile Tech Stack Limit ---
   $: mobileVisibleTech = project.techStack.slice(0, 3);
   $: mobileHiddenTechCount =
     project.techStack.length - mobileVisibleTech.length;
 
-  // --- Event Handlers for Desktop View ---
   function handleMouseEnter() {
     isHovered = true;
-    if (window.innerWidth >= 768 && videoRef && project.video) {
+    // --- FIX: Check for videoSrc instead of project.video ---
+    if (window.innerWidth >= 768 && videoRef && videoSrc) {
       videoPlayTimeout = window.setTimeout(() => {
         if (videoRef) {
           isVideoActive = true;
@@ -50,18 +51,14 @@
   function handleMouseDown() {
     isPressed = true;
   }
-
   function handleMouseUp() {
     isPressed = false;
   }
 </script>
 
-
 <div class="relative m-4 p-2 border-b border-slate-800 md:border-b-0">
-
   <div
-    class="hidden md:block absolute inset-0 text-white pointer-events-none z-20
-           transition-transform duration-250 ease-in-out"
+    class="hidden md:block absolute inset-0 text-white pointer-events-none z-20 transition-transform duration-250 ease-in-out"
     class:scale-[0.99]={isPressed}
     class:scale-[1.02]={isHovered && !isPressed}
   >
@@ -98,33 +95,26 @@
     on:mousedown={handleMouseDown}
     on:mouseup={handleMouseUp}
   >
-
     <div
-      class="grid grid-cols-[100px_1fr]
-             md:relative md:flex md:flex-row md:rounded-lg md:border md:border-gray-800 md:aspect-[6/1]
-             md:group-hover:border-blue-500/50 md:dark:group-hover:border-blue-400/50
-             md:group-hover:shadow-lg md:group-hover:shadow-blue-500/20 md:dark:group-hover:shadow-sky-400/20
-             md:transition-transform md:duration-250 md:ease-in-out md:group-hover:scale-[1.02] md:group-active:scale-[0.99]"
-    
+      class="grid grid-cols-[100px_1fr] md:relative md:flex md:flex-row md:rounded-lg md:border md:border-gray-800 md:aspect-[6/1] md:group-hover:border-blue-500/50 md:dark:group-hover:border-blue-400/50 md:group-hover:shadow-lg md:group-hover:shadow-blue-500/20 md:dark:group-hover:shadow-sky-400/20 md:transition-transform md:duration-250 md:ease-in-out md:group-hover:scale-[1.02] md:group-active:scale-[0.99]"
     >
-    <!-- We will no longer use transition effect toward project slug -->
-
-      <!-- [COLUMN 1] Image + Mobile Category -->
       <div>
         <div
           class="aspect-[2/3] md:relative md:h-full md:flex-shrink-0 md:aspect-video"
           aria-label="Project Thumbnail"
         >
+          <!-- FIX: Use the 'portrait' thumbnail and remove the invalid fallback -->
           <img
-            src={project.thumbnail.portrait || project.thumbnail}
+            src={project.thumbnail.portrait}
             alt={project.title}
             class="w-full h-full object-cover rounded-md md:absolute md:inset-0 md:rounded-none transition-opacity duration-300"
             class:md:opacity-0={isVideoActive}
           />
-          {#if project.video}
+          <!-- FIX: Check for videoSrc and use it -->
+          {#if videoSrc}
             <video
               bind:this={videoRef}
-              src={project.video}
+              src={videoSrc}
               class="hidden md:block absolute inset-0 w-full h-full object-cover transition-opacity duration-300"
               class:opacity-0={!isVideoActive}
               muted
@@ -147,42 +137,33 @@
         </div>
       </div>
 
-
       <div
-        class="flex flex-col justify-between
-                  md:flex-1 md:p-6 md:bg-gradient-to-br md:from-gray-900 md:to-black md:border-l md:border-slate-700/50"
+        class="flex flex-col justify-between md:flex-1 md:p-6 md:bg-gradient-to-br md:from-gray-900 md:to-black md:border-l md:border-slate-700/50"
         aria-label="Project Information"
       >
         <div>
-
-            <!-- I think the pattern of the grid is inverted N instead of Z, that's why the project category is on the second order instead of project title --> 
-          <div class="flex justify-between ">
-          <h3
-            class="hidden md:flex text-sm font-medium text-slate-400 flex-shrink-0 items-center gap-1.5 mb-2 justify-end"
-          >
-            <img
-              src={`/icons/${categoryIconMap[project.category]}.svg`}
-              alt=""
-              class="h-4 w-4"
-            />
-            <span>{project.category}</span>
-          </h3>
-          <h2
-            class="text-md font-bold text-slate-50 md:text-xl md:group-hover:text-blue-400 transition-colors duration-300"
-          >
-            {project.title}
-          </h2>
-        
-          </div> 
-
-
+          <div class="flex justify-between">
+            <h3
+              class="hidden md:flex text-sm font-medium text-slate-400 flex-shrink-0 items-center gap-1.5 mb-2 justify-end"
+            >
+              <img
+                src={`/icons/${categoryIconMap[project.category]}.svg`}
+                alt=""
+                class="h-4 w-4"
+              />
+              <span>{project.category}</span>
+            </h3>
+            <h2
+              class="text-md font-bold text-slate-50 md:text-xl md:group-hover:text-blue-400 transition-colors duration-300"
+            >
+              {project.title}
+            </h2>
+          </div>
           <p class="text-slate-400 text-sm leading-relaxed line-clamp-2 mt-1">
             {project.description}
           </p>
         </div>
-
         <div class="flex justify-between items-end mt-4">
-          <!-- Mobile Tech Stack (limited to 3) -->
           <div class="flex md:hidden gap-1.5">
             {#each mobileVisibleTech as tech}
               <div
@@ -199,7 +180,6 @@
               </div>
             {/if}
           </div>
-          <!-- Desktop Tech Stack (full) -->
           <div class="hidden md:flex flex-wrap gap-2">
             {#each project.techStack as tech}
               <div
@@ -217,7 +197,6 @@
               </div>
             {/each}
           </div>
-          <!-- Desktop-Only "View Project" Link -->
           <p
             class="hidden md:block view-more-link flex-shrink-0 text-sm font-semibold text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-150 ease-in-out"
           >
